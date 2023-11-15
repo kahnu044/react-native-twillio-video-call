@@ -9,6 +9,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
+import com.twiliorn.library.TwilioPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -20,11 +21,11 @@ public class MainApplication extends Application implements ReactApplication {
         }
 
         @Override
-        protected List<ReactPackage> getPackages() {
+        protected List getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
-          List<ReactPackage> packages = new PackageList(this).getPackages();
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
+          List packages = new PackageList(this).getPackages();
+          //  add the following code
+          packages.add(new TwilioPackage());
           return packages;
         }
 

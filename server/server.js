@@ -1,5 +1,6 @@
 const express = require('express');
 const twilio = require('twilio');
+const ngrok = require('ngrok');
 const app = express();
 
 require('dotenv').config()
@@ -18,6 +19,12 @@ const PORT = process.env.PORT || 3000;
 const AccessToken = twilio.jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 
+app.get('/', (req, res) => {
+    return res.status(400).json({
+        success: true,
+        message: 'Welcome to twilio video token generator app'
+    });
+});
 
 app.post('/twilio/create-video-room-token', (req, res) => {
 
@@ -53,7 +60,9 @@ app.post('/twilio/create-video-room-token', (req, res) => {
     }
 });
 
+app.listen(PORT, async () => {
+    console.log(`Server is running on your local - http://localhost:${PORT}`);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    const ngrokUrl = await ngrok.connect(PORT);
+    console.log(`Server is running on ngrok - ${ngrokUrl}`);
 });

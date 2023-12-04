@@ -13,7 +13,6 @@ app.use(express.urlencoded({
 const TWILIO_API_KEY = process.env.TWILIO_API_KEY;
 const TWILIO_API_SECRET = process.env.TWILIO_API_SECRET;
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_ACCOUNT_AUTH_TOKEN = process.env.TWILIO_ACCOUNT_AUTH_TOKEN;
 const PORT = process.env.PORT || 3000;
 
 const AccessToken = twilio.jwt.AccessToken;
